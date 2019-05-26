@@ -406,16 +406,20 @@ message LayerParameter {
   optional ThresholdParameter threshold_param = 128;
   optional TileParameter tile_param = 138;
   optional WindowDataParameter window_data_param = 129;
+  
+  // ctc LOSS  ctc转录层==============================2019
   optional CtcLossParameter ctc_loss_param = 200;
+  
   optional ContinuationIndicatorParameter continuation_indicator_param = 201;
   optional PermuteParameter permute_param = 202;
   optional LabelsequenceAccuracyParameter labelsequence_accuracy_param = 203;
 }
 
+// ctc转录层 参数
 message CtcLossParameter {
     optional uint32 alphabet_size = 1 [default = 0];
-    optional uint32 time_step = 3 [default = 0];
-    optional int32 blank_label = 4 [default = 0];
+    optional uint32 time_step = 3 [default = 0];     // 时间步长  lstm层输出通道数量
+    optional int32 blank_label = 4 [default = 0];    // 空白字符标签
 }
 message ContinuationIndicatorParameter {
     optional uint32 time_step = 1 [default = 0];
